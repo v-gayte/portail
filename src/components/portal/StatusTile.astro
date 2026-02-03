@@ -1,0 +1,55 @@
+---
+// StatusTile - 80s Control Panel LED status indicator
+import { useTranslations } from "../../i18n/ui";
+
+const { lang = "fr" } = Astro.props;
+const t = useTranslations(lang as "fr" | "en");
+
+// Status configuration
+const status = "open"; // open, busy, offline
+---
+
+<div
+  class="status-tile col-span-1 row-span-1 bg-vintage-grey border-2 border-accent-amber/40 rounded-lg relative overflow-hidden flex flex-col items-center justify-between p-4 shadow-lg group"
+>
+  <!-- Simple Status Indicator -->
+  <div class="relative flex flex-col items-center gap-4 w-full">
+    <div 
+      class:list={[
+        "w-full py-2 px-3 rounded border flex items-center justify-between transition-colors duration-300",
+        status === 'open' ? "bg-green-500/10 border-green-500/30" :
+        status === 'busy' ? "bg-red-500/10 border-red-500/30" :
+        "bg-warm-grey border-white/10"
+      ]}
+    >
+      <span class="text-xs font-sans text-vintage-cream-dark uppercase tracking-wider">{t("status.label")}</span>
+      <div 
+        class:list={[
+          "w-2 h-2 rounded-full shadow-[0_0_8px_currentColor] animate-pulse",
+          status === 'open' ? "bg-green-500 text-green-500" :
+          status === 'busy' ? "bg-red-500 text-red-500" :
+          "bg-gray-500 text-gray-500"
+        ]}
+      ></div>
+    </div>
+
+    <div class="text-center">
+      <h4 
+        class:list={[
+          "text-lg font-bold font-slab tracking-wide",
+          status === 'open' ? "text-green-400" :
+          status === 'busy' ? "text-red-400" :
+          "text-gray-400"
+        ]}
+      >
+        {status === 'open' ? t("status.open") : status === 'busy' ? t("status.busy") : t("status.offline")}
+      </h4>
+    </div>
+  </div>
+</div>
+
+<style>
+  .status-tile {
+    background: linear-gradient(135deg, #252526 0%, #2f2f30 100%);
+  }
+</style>

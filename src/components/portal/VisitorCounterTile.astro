@@ -1,0 +1,81 @@
+---
+// VisitorCounterTile - Mechanical Split-Flap Display Style
+import { useTranslations } from "../../i18n/ui";
+
+const { lang = "fr" } = Astro.props;
+const t = useTranslations(lang as "fr" | "en");
+---
+
+<div
+  class="visitor-tile col-span-1 row-span-1 bg-vintage-grey border-2 border-accent-amber/40 rounded-lg relative overflow-hidden flex flex-col items-center justify-between p-4 shadow-lg"
+>
+  <div class="absolute top-2 left-0 right-0 text-center">
+    <span class="text-[9px] uppercase tracking-wider text-vintage-cream-dark font-sans opacity-60">
+      {t("visitors.label")}
+    </span>
+  </div>
+
+  <!-- Mechanical Display Container -->
+  <div class="flex gap-1 mt-2 items-center justify-center p-3 bg-[#111] rounded-md border border-white/5 shadow-[inset_0_2px_4px_rgba(0,0,0,0.8)]">
+    <!-- Digits wrapper -->
+    <div class="flex gap-[2px]">
+      {[0, 1, 2].map((i) => (
+        <div class="relative w-8 h-12 bg-[#1a1a1a] rounded-[2px] overflow-hidden flex items-center justify-center">
+          <span class="text-2xl font-mono font-bold text-vintage-cream z-10" id={`digit-${i + 1}`}>-</span>
+          <!-- Subtle split line -->
+          <div class="absolute inset-x-0 top-1/2 h-px bg-black/50 z-20"></div>
+          <!-- Shine -->
+          <div class="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="flex items-center gap-2 mt-2 opacity-60">
+      <div class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_5px_rgba(16,185,129,0.5)]"></div>
+      <span class="text-[9px] uppercase tracking-widest text-vintage-cream-dark font-sans font-medium">En ligne</span>
+  </div>
+</div>
+
+<script>
+  function updateCounter() {
+    const d1 = document.getElementById('digit-1');
+    const d2 = document.getElementById('digit-2');
+    const d3 = document.getElementById('digit-3');
+    
+    // Simulate/Retrieve visitor count
+    let count = parseInt(localStorage.getItem('portfolio_visitors') || '032');
+    
+    // Increment if new session
+    if (!sessionStorage.getItem('visited_session')) {
+      count += 1;
+      localStorage.setItem('portfolio_visitors', count.toString());
+      sessionStorage.setItem('visited_session', 'true');
+    }
+    
+    // Cap at 999 for 3 digits
+    if (count > 999) count = 0;
+    
+    const str = count.toString().padStart(3, '0');
+    
+    // Animate numbers
+    if (d1 && d2 && d3) {
+      // Small random delay for "mechanical" feel
+      setTimeout(() => d1.innerText = str[0], 100);
+      setTimeout(() => d2.innerText = str[1], 250);
+      setTimeout(() => d3.innerText = str[2], 400);
+    }
+  }
+
+  // Run on load
+  updateCounter();
+</script>
+
+<style>
+  .visitor-tile {
+    background: linear-gradient(135deg, #252526 0%, #2f2f30 100%);
+  }
+  .split-flap {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  }
+</style>

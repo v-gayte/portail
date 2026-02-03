@@ -26,6 +26,12 @@ export const ui = {
     "footer.rights": "© 2026",
     "footer.legal": "Mentions légales",
     "footer.contact": "Contact",
+    "cv.download": "Télécharger CV",
+    "status.label": "Statut",
+    "status.open": "Disponible",
+    "status.busy": "Occupé",
+    "status.offline": "Absent",
+    "visitors.label": "Visiteurs (30j)",
   },
   en: {
     "flagship.badge": "Latest version",
@@ -47,6 +53,12 @@ export const ui = {
     "footer.rights": "© 2026",
     "footer.legal": "Legal",
     "footer.contact": "Contact",
+    "cv.download": "Download CV",
+    "status.label": "Status",
+    "status.open": "Open to work",
+    "status.busy": "Busy",
+    "status.offline": "Offline",
+    "visitors.label": "Visitors (30d)",
   },
 } as const;
 

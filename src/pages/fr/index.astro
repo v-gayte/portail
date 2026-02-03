@@ -3,10 +3,12 @@ import MainLayout from "../../layouts/MainLayout.astro";
 import FlagshipTile from "../../components/portal/FlagshipTile.astro";
 import WorkshopTile from "../../components/portal/WorkshopTile.astro";
 import IdentityTile from "../../components/portal/IdentityTile.astro";
-import CinemaTile from "../../components/portal/CinemaTile.astro";
 import TechStackTile from "../../components/portal/TechStackTile.astro";
 import SocialFlowTile from "../../components/portal/SocialFlowTile.astro";
 import ProjectGrid from "../../components/portal/ProjectGrid.astro";
+import CvDiskTile from "../../components/portal/CvDiskTile.astro";
+import StatusTile from "../../components/portal/StatusTile.astro";
+import VisitorCounterTile from "../../components/portal/VisitorCounterTile.astro";
 
 import { useTranslations } from "../../i18n/ui";
 
@@ -62,20 +64,20 @@ const t = useTranslations(lang);
       <div
         class="narrative-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 auto-rows-[140px] gap-5 md:gap-6"
       >
-        <!-- Line 1-2: Flagship (3x2) + Cinema (1x1) -->
+        <!-- Line 1-2: Flagship (3x2) + CV (1x1) -->
         <!-- Line 2: Flagship (cont.) + TechStack (1x1) -->
         <FlagshipTile lang={lang} />
-        <CinemaTile lang={lang} />
+        <CvDiskTile lang={lang} />
         <TechStackTile lang={lang} />
 
         <!-- Line 3: Identity (2x1) + Workshop (2x1) -->
         <IdentityTile lang={lang} />
         <WorkshopTile lang={lang} />
 
-        <!-- Line 4: Spacer (1x1) + Contact (2x1) + Spacer (1x1) -->
-        <div class="hidden lg:block col-span-1 bg-vintage-grey/20 border-2 border-accent-amber/10 rounded-lg border-dashed"></div>
+        <!-- Line 4: Visitor (1x1) + Contact (2x1) + Status (1x1) -->
+        <VisitorCounterTile lang={lang} />
         <SocialFlowTile lang={lang} />
-        <div class="hidden lg:block col-span-1 bg-vintage-grey/20 border-2 border-accent-amber/10 rounded-lg border-dashed"></div>
+        <StatusTile lang={lang} />
       </div>
 
       <!-- Projects Dropdown -->

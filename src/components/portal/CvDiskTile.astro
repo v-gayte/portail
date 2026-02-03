@@ -1,0 +1,57 @@
+---
+// CvDiskTile - Floppy disk style CV download
+import { motion } from "framer-motion";
+import { useTranslations } from "../../i18n/ui";
+
+const { lang = "fr" } = Astro.props;
+const t = useTranslations(lang as "fr" | "en");
+---
+
+<motion.a
+  href="/cv.pdf"
+  download
+  client:load
+  whileHover={{ y: -5, scale: 1.02 }}
+  whileTap={{ scale: 0.95 }}
+  className="cv-tile col-span-1 row-span-1 bg-vintage-grey border-2 border-accent-amber/40 rounded-lg relative overflow-hidden group shadow-lg flex flex-col items-center justify-center cursor-pointer"
+>
+  <div
+    class="absolute inset-0 bg-gradient-to-br from-accent-amber/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+  >
+  </div>
+
+  <!-- Floppy Disk Graphic -->
+  <div class="relative w-20 h-20 mb-3 group-hover:rotate-[20deg] transition-transform duration-300 ease-in-out">
+    <!-- Main disk body -->
+    <div class="absolute inset-0 bg-warm-grey rounded-md border border-accent-amber/30 flex items-center justify-center shadow-md">
+      <!-- Metal shutter -->
+      <div class="absolute top-0 right-4 w-8 h-10 bg-zinc-400/20 border border-zinc-400/40 rounded-b shadow-inner"></div>
+      
+      <!-- Label area -->
+      <div class="absolute top-2 left-2 right-12 bottom-10 bg-[#1a1a1a] border border-white/5 rounded-sm"></div>
+    </div>
+    
+    <!-- Sticker Label -->
+    <div class="absolute bottom-2 left-2 right-2 h-8 bg-vintage-cream rounded-[2px] flex items-center justify-center shadow-sm transform -rotate-2">
+      <span class="text-[10px] font-slab font-bold text-warm-grey tracking-tight uppercase border-b-2 border-accent-amber/50 px-1">CV_{new Date().getFullYear()}</span>
+    </div>
+  </div>
+
+  <span class="text-xs font-sans font-bold text-accent-amber group-hover:text-text-cream transition-colors">
+    {t("cv.download")}
+  </span>
+  
+  <!-- Corner screw -->
+  <div class="absolute top-2 left-2 text-accent-amber/20 opacity-50">
+    <svg width="6" height="6" viewBox="0 0 6 6" fill="currentColor"><path d="M3 0L6 3L3 6L0 3Z"/></svg>
+  </div>
+  <div class="absolute bottom-2 right-2 text-accent-amber/20 opacity-50">
+    <svg width="6" height="6" viewBox="0 0 6 6" fill="currentColor"><path d="M3 0L6 3L3 6L0 3Z"/></svg>
+  </div>
+</motion.a>
+
+<style>
+  .cv-tile {
+    background: linear-gradient(135deg, #252526 0%, #2f2f30 100%);
+  }
+</style>
