@@ -11,6 +11,8 @@ export const ui = {
     "flagship.title": "Sondages & Événements",
     "flagship.description":
       "Plateforme collaborative de gestion d'événements avec système de sondages intégré",
+    "flagship.details": "Plus de détails →",
+    "flagship.visit": "Visiter le site",
     "cinema.status": "• En cours",
     "identity.quote": "« Développeur d'idées, curieux par nature. »",
     "identity.trait": "Sociable",
@@ -38,6 +40,8 @@ export const ui = {
     "flagship.title": "Polls & Events",
     "flagship.description":
       "Collaborative event management platform with integrated polling system",
+    "flagship.details": "More details →",
+    "flagship.visit": "Visit website",
     "cinema.status": "• Now Watching",
     "identity.quote": "“Developer of ideas, curious by nature.”",
     "identity.trait": "Sociable",
