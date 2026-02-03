@@ -1,0 +1,72 @@
+---
+// PlaygroundTile - Gaming/experiments (2x2 vertical)
+import { motion } from "framer-motion";
+import { useTranslations } from "../../i18n/ui";
+
+const { lang = "fr" } = Astro.props;
+const t = useTranslations(lang as "fr" | "en");
+---
+
+<motion.div
+  client:load
+  whileHover={{ y: -5, scale: 1.02 }}
+  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+  className="playground-tile col-span-1 md:col-span-2 row-span-1 bg-vintage-grey border-2 border-accent-amber/40 rounded-lg overflow-hidden relative group shadow-lg"
+>
+  <div
+    class="absolute inset-0 bg-gradient-to-br from-accent-amber/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+  >
+  </div>
+
+  <div
+    class="relative h-full p-4 flex flex-row items-center justify-between gap-4"
+  >
+    <div class="space-y-1 w-1/3 px-3 flex flex-col justify-center">
+      <h3
+        class="text-xl md:text-2xl font-slab font-bold text-text-cream truncate"
+      >
+        {t("playground.title")}
+      </h3>
+      <p
+        class="text-xs text-accent-amber font-sans uppercase tracking-wide truncate"
+      >
+        {t("playground.subtitle")}
+      </p>
+    </div>
+
+    <!-- Project cards - Horizontal Layout -->
+    <div class="grid grid-cols-2 gap-3 w-2/3 pr-2">
+      <div
+        class="p-2 bg-warm-grey border border-accent-amber/20 rounded text-center overflow-hidden flex flex-col justify-center h-full"
+      >
+        <h4
+          class="text-sm font-slab font-semibold text-text-cream mb-0.5 truncate"
+        >
+          YT-Alibi
+        </h4>
+        <p class="text-[10px] text-vintage-cream-dark font-sans truncate">
+          {t("playground.yt.desc")}
+        </p>
+      </div>
+
+      <div
+        class="p-2 bg-warm-grey border border-accent-amber/20 rounded text-center overflow-hidden flex flex-col justify-center h-full"
+      >
+        <h4
+          class="text-sm font-slab font-semibold text-text-cream mb-0.5 truncate"
+        >
+          {t("playground.gt.title")}
+        </h4>
+        <p class="text-[10px] text-vintage-cream-dark font-sans truncate">
+          {t("playground.gt.desc")}
+        </p>
+      </div>
+    </div>
+  </div>
+</motion.div>
+
+<style>
+  .playground-tile {
+    background: linear-gradient(135deg, #252526 0%, #2f2f30 100%);
+  }
+</style>

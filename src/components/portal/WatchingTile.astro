@@ -1,0 +1,100 @@
+---
+// WatchingTile - Personal widget showing what's being watched (2x2 grid)
+import { motion } from "framer-motion";
+---
+
+<motion.div
+  client:load
+  whileHover={{ y: -5, scale: 1.02 }}
+  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+  className="watching-tile col-span-1 row-span-2 bg-vintage-grey border-2 border-accent-amber/40 rounded-lg overflow-hidden relative group shadow-lg"
+>
+  <div
+    class="absolute inset-0 bg-gradient-to-br from-accent-amber/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+  >
+  </div>
+
+  <div class="relative h-full p-4 md:p-5 flex flex-col justify-between">
+    <!-- Header -->
+    <div class="flex items-center gap-2">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-4 w-4 md:h-5 md:w-5 text-accent-amber"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+        ></path>
+      </svg>
+      <span
+        class="text-xs uppercase tracking-wider text-vintage-cream-dark font-sans"
+        >En cours</span
+      >
+    </div>
+
+    <!-- Content -->
+    <div class="space-y-2 md:space-y-3">
+      <h4 class="text-xl md:text-2xl font-slab font-bold text-text-cream">
+        Interstellar
+      </h4>
+
+      <p class="text-xs md:text-sm text-vintage-cream-dark font-sans">
+        Christopher Nolan • 2014
+      </p>
+
+      <!-- Progress Bar -->
+      <div class="space-y-1">
+        <div
+          class="w-full bg-vintage-grey-light rounded-full h-1.5 overflow-hidden"
+        >
+          <motion.div
+            initial={{ width: "0%" }}
+            animate={{ width: "67%" }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="h-full bg-accent-amber rounded-full"
+          />
+        </div>
+        <div
+          class="flex justify-between text-[10px] md:text-xs text-vintage-cream-dark font-sans"
+        >
+          <span>1:52:30</span>
+          <span>2:49:00</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="flex items-center gap-2 text-accent-amber/60">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-3 w-3 md:h-4 md:w-4"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+        ></path>
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg>
+      <span class="text-[10px] md:text-xs font-sans">Continuer</span>
+    </div>
+  </div>
+</motion.div>
+
+<style>
+  .watching-tile {
+    background: linear-gradient(135deg, #252526 0%, #2f2f30 100%);
+  }
+</style>

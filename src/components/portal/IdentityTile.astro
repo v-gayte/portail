@@ -1,0 +1,50 @@
+---
+// IdentityTile - Personal intro with portrait (2x1)
+import { motion } from "framer-motion";
+import { useTranslations } from "../../i18n/ui";
+
+const { lang = "fr" } = Astro.props;
+const t = useTranslations(lang as "fr" | "en");
+---
+
+<motion.div
+  client:load
+  whileHover={{ y: -5, scale: 1.02 }}
+  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+  className="identity-tile col-span-1 md:col-span-2 row-span-1 bg-vintage-grey border-2 border-accent-amber/40 rounded-lg overflow-hidden relative group shadow-lg"
+>
+  <div
+    class="absolute inset-0 bg-gradient-to-br from-accent-amber/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+  >
+  </div>
+
+  <div class="relative h-full p-5 flex flex-col items-center justify-center">
+    <div class="space-y-2 text-center w-full px-3">
+      <h3
+        class="text-2xl md:text-3xl font-slab font-bold text-text-cream truncate"
+      >
+        Virgil G.
+      </h3>
+      <p
+        class="text-sm md:text-base text-vintage-cream-dark font-sans italic max-w-sm mx-auto line-clamp-2"
+      >
+        {t("identity.quote")}
+      </p>
+
+      <!-- Trait badge -->
+      <div>
+        <span
+          class="inline-block px-4 py-1.5 bg-accent-amber/10 border border-accent-amber/30 rounded-full text-accent-amber text-xs font-sans truncate max-w-full"
+        >
+          {t("identity.trait")}
+        </span>
+      </div>
+    </div>
+  </div>
+</motion.div>
+
+<style>
+  .identity-tile {
+    background: linear-gradient(135deg, #252526 0%, #2f2f30 100%);
+  }
+</style>

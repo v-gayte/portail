@@ -5,6 +5,8 @@ import tailwindcss from "@tailwindcss/vite";
 import vercel from "@astrojs/vercel";
 import mdx from "@astrojs/mdx";
 
+import react from "@astrojs/react";
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
@@ -12,7 +14,7 @@ export default defineConfig({
   },
 
   adapter: vercel(),
-  integrations: [mdx()],
+  integrations: [mdx(), react()],
 
   i18n: {
     defaultLocale: "fr",

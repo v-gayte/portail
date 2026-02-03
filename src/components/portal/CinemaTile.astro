@@ -1,0 +1,45 @@
+---
+// CinemaTile - What I'm watching (1x1)
+import { motion } from "framer-motion";
+import { useTranslations } from "../../i18n/ui";
+
+const { lang = "fr" } = Astro.props;
+const t = useTranslations(lang as "fr" | "en");
+---
+
+<motion.div
+  client:load
+  whileHover={{ y: -5, scale: 1.02 }}
+  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+  className="cinema-tile col-span-1 row-span-1 bg-vintage-grey border-2 border-accent-amber/40 rounded-lg overflow-hidden relative group shadow-lg"
+>
+  <div
+    class="absolute inset-0 bg-gradient-to-br from-accent-amber/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+  >
+  </div>
+
+  <div class="relative h-full p-4 flex flex-col items-center justify-center">
+    <div class="space-y-2 px-2 w-full">
+      <span
+        class="text-xs uppercase tracking-wider text-accent-amber font-sans block text-center truncate"
+        >{t("cinema.status")}</span
+      >
+
+      <h4
+        class="text-lg font-slab font-bold text-text-cream leading-tight text-center truncate"
+      >
+        Interstellar
+      </h4>
+
+      <p class="text-xs text-vintage-cream-dark font-sans text-center truncate">
+        Christopher Nolan • 2014
+      </p>
+    </div>
+  </div>
+</motion.div>
+
+<style>
+  .cinema-tile {
+    background: linear-gradient(135deg, #252526 0%, #2f2f30 100%);
+  }
+</style>

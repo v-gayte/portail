@@ -1,0 +1,65 @@
+---
+// FlagshipTile - Main project showcase (3x2)
+import { motion } from "framer-motion";
+import { useTranslations } from "../../i18n/ui";
+
+const { lang = "fr" } = Astro.props;
+const t = useTranslations(lang as "fr" | "en");
+---
+
+<motion.div
+  client:load
+  whileHover={{ y: -5, scale: 1.02 }}
+  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+  className="flagship-tile col-span-1 md:col-span-2 lg:col-span-3 row-span-2 bg-vintage-grey border-2 border-accent-amber/40 rounded-lg overflow-hidden relative group shadow-lg"
+>
+  <div
+    class="absolute inset-0 bg-gradient-to-br from-accent-amber/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+  >
+  </div>
+
+  <!-- Badge "Dernière version" appears on hover -->
+  <div
+    class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+  >
+    <span
+      class="inline-flex items-center gap-2 px-3 py-1.5 bg-accent-amber text-warm-grey text-xs font-sans font-semibold rounded-full truncate"
+    >
+      {t("flagship.badge")}
+    </span>
+  </div>
+
+  <div class="relative h-full p-6 flex flex-col items-center justify-center">
+    <div class="space-y-4 text-center max-w-2xl w-full px-4">
+      <h2
+        class="text-3xl md:text-4xl lg:text-5xl font-slab font-bold text-text-cream leading-tight truncate"
+      >
+        {t("flagship.title")}
+        <span class="text-accent-amber">.</span>
+      </h2>
+
+      <p
+        class="text-vintage-cream-dark text-sm md:text-base font-sans line-clamp-3"
+      >
+        {t("flagship.description")}
+      </p>
+
+      <!-- Tech badges -->
+      <div class="flex flex-wrap gap-2 justify-center pt-2">
+        {
+          ["TypeScript", "Next.js", "SQL", "Tailwind CSS"].map((tech) => (
+            <span class="px-3 py-1 bg-accent-amber/10 border border-accent-amber/30 rounded text-accent-amber text-xs font-sans truncate">
+              {tech}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</motion.div>
+
+<style>
+  .flagship-tile {
+    background: linear-gradient(135deg, #252526 0%, #2f2f30 100%);
+  }
+</style>

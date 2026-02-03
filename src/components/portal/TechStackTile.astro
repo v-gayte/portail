@@ -1,0 +1,59 @@
+---
+// TechStackTile - Tech stack list (1x1)
+import { motion } from "framer-motion";
+import { useTranslations } from "../../i18n/ui";
+
+const { lang = "fr" } = Astro.props;
+const t = useTranslations(lang as "fr" | "en");
+---
+
+<motion.div
+  client:load
+  whileHover={{ y: -5, scale: 1.02 }}
+  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+  className="tech-tile col-span-1 row-span-1 bg-vintage-grey border-2 border-accent-amber/40 rounded-lg overflow-hidden relative group shadow-lg"
+>
+  <div
+    class="absolute inset-0 bg-gradient-to-br from-accent-amber/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+  >
+  </div>
+
+  <div class="relative h-full p-4 flex flex-col items-center justify-center">
+    <div class="space-y-3 w-full px-2">
+      <h4
+        class="text-base font-slab font-bold text-text-cream text-center truncate"
+      >
+        {t("tech.title")}
+      </h4>
+
+      <div class="grid grid-cols-2 gap-2 text-xs font-sans text-accent-amber">
+        <div
+          class="p-2 bg-accent-amber/10 border border-accent-amber/20 rounded text-center truncate"
+        >
+          Python
+        </div>
+        <div
+          class="p-2 bg-accent-amber/10 border border-accent-amber/20 rounded text-center truncate"
+        >
+          C++
+        </div>
+        <div
+          class="p-2 bg-accent-amber/10 border border-accent-amber/20 rounded text-center truncate"
+        >
+          C#
+        </div>
+        <div
+          class="p-2 bg-accent-amber/10 border border-accent-amber/20 rounded text-center truncate"
+        >
+          SQL
+        </div>
+      </div>
+    </div>
+  </div>
+</motion.div>
+
+<style>
+  .tech-tile {
+    background: linear-gradient(135deg, #252526 0%, #2f2f30 100%);
+  }
+</style>

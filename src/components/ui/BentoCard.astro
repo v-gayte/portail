@@ -2,7 +2,7 @@
 interface BentoCardProps {
   title: string;
   description?: string;
-  variant?: 'large' | 'medium' | 'small';
+  variant?: "large" | "medium" | "small";
   gradient?: string;
   href?: string;
   class?: string;
@@ -11,19 +11,19 @@ interface BentoCardProps {
 const {
   title,
   description,
-  variant = 'medium',
-  gradient = 'from-primary-500 to-accent-500',
+  variant = "medium",
+  gradient = "from-primary-500 to-accent-500",
   href,
-  class: className = '',
+  class: className = "",
 } = Astro.props;
 
 const sizeClasses = {
-  large: 'col-span-2 row-span-2 min-h-[400px]',
-  medium: 'col-span-1 row-span-2 min-h-[400px]',
-  small: 'col-span-1 row-span-1 min-h-[200px]',
+  large: "col-span-2 row-span-2 min-h-[400px]",
+  medium: "col-span-1 row-span-2 min-h-[400px]",
+  small: "col-span-1 row-span-1 min-h-[200px]",
 };
 
-const Component = href ? 'a' : 'div';
+const Component = href ? "a" : "div";
 ---
 
 <Component
@@ -34,16 +34,14 @@ const Component = href ? 'a' : 'div';
     class="flex h-full w-full flex-col justify-between rounded-2xl bg-dark-900 p-6 transition-all duration-300 group-hover:bg-dark-800/95"
   >
     <div>
-      <h3
-        class="text-2xl font-bold text-white mb-2 font-display"
-      >
+      <h3 class="text-2xl font-bold text-white mb-2 font-display">
         {title}
       </h3>
-      {description && (
-        <p class="text-dark-400 text-sm leading-relaxed">
-          {description}
-        </p>
-      )}
+      {
+        description && (
+          <p class="text-dark-400 text-sm leading-relaxed">{description}</p>
+        )
+      }
     </div>
     <slot />
   </div>
