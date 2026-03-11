@@ -1,0 +1,113 @@
+---
+// ChatBadgeTile - Blueprint-style chat bubble (2x2 grid)
+import { motion } from "framer-motion";
+---
+
+<motion.div
+  client:load
+  whileHover={{ y: -5, scale: 1.02 }}
+  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+  className="chat-tile col-span-1 row-span-2 bg-vintage-grey border-2 border-accent-amber/40 rounded-lg overflow-hidden relative group shadow-lg"
+>
+  <div
+    class="absolute inset-0 bg-gradient-to-br from-accent-amber/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+  >
+  </div>
+
+  <div class="relative h-full p-4 md:p-5 flex flex-col justify-between">
+    <!-- Title -->
+    <div class="space-y-1">
+      <h4 class="text-lg md:text-xl font-slab font-bold text-text-cream">
+        Sociable
+      </h4>
+      <p
+        class="text-[10px] md:text-xs text-vintage-cream-dark font-sans uppercase tracking-wider"
+      >
+        Lets Connect
+      </p>
+    </div>
+
+    <!-- Blueprint Chat Bubble Illustration -->
+    <div class="flex-1 flex items-center justify-center py-3 md:py-4">
+      <svg
+        viewBox="0 0 200 200"
+        class="w-full h-full max-w-[100px] max-h-[100px] md:max-w-[120px] md:max-h-[120px]"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <!-- Blueprint grid background -->
+        <defs>
+          <pattern
+            id="grid"
+            width="10"
+            height="10"
+            patternUnits="userSpaceOnUse"
+          >
+            <path
+              d="M 10 0 L 0 0 0 10"
+              fill="none"
+              stroke="rgba(255, 191, 0, 0.1)"
+              stroke-width="0.5"></path>
+          </pattern>
+        </defs>
+        <rect width="200" height="200" fill="url(#grid)"></rect>
+
+        <!-- Chat bubble outline -->
+        <g stroke="#ffbf00" stroke-width="2" fill="none">
+          <!-- Main bubble -->
+          <rect x="40" y="50" width="120" height="80" rx="12"></rect>
+
+          <!-- Tail -->
+          <path d="M 70 130 L 60 150 L 85 130" stroke-linejoin="round"></path>
+
+          <!-- Message lines -->
+          <line
+            x1="60"
+            y1="75"
+            x2="140"
+            y2="75"
+            stroke="#ffbf00"
+            stroke-width="1.5"
+            opacity="0.6"></line>
+          <line
+            x1="60"
+            y1="90"
+            x2="120"
+            y2="90"
+            stroke="#ffbf00"
+            stroke-width="1.5"
+            opacity="0.6"></line>
+          <line
+            x1="60"
+            y1="105"
+            x2="130"
+            y2="105"
+            stroke="#ffbf00"
+            stroke-width="1.5"
+            opacity="0.6"></line>
+
+          <!-- Corner accents -->
+          <circle cx="50" cy="60" r="2" fill="#ffbf00"></circle>
+          <circle cx="150" cy="60" r="2" fill="#ffbf00"></circle>
+          <circle cx="150" cy="120" r="2" fill="#ffbf00"></circle>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Footer -->
+    <div
+      class="flex items-center gap-2 text-accent-amber/80 text-xs md:text-sm font-sans"
+    >
+      <span class="truncate">Ouvert aux opportunités</span>
+      <div
+        class="w-2 h-2 bg-accent-amber rounded-full animate-pulse-amber flex-shrink-0"
+      >
+      </div>
+    </div>
+  </div>
+</motion.div>
+
+<style>
+  .chat-tile {
+    background: linear-gradient(135deg, #252526 0%, #2f2f30 100%);
+  }
+</style>
