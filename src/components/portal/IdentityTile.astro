@@ -31,13 +31,15 @@ const t = useTranslations(lang as "fr" | "en");
         {t("identity.quote")}
       </p>
 
-      <!-- Trait badge -->
-      <div>
-        <span
-          class="inline-block px-4 py-1.5 bg-accent-amber/10 border border-accent-amber/30 rounded-full text-accent-amber text-xs font-sans truncate max-w-full"
+      <!-- Action link -->
+      <div class="pt-2">
+        <a
+          href="https://portfolio.virgil-gayte.me/fr/parcours"
+          class="inline-block px-5 py-2 bg-accent-amber text-warm-grey font-sans font-semibold text-sm rounded hover:bg-vintage-amber-light transition-colors"
+          data-hoverable
         >
-          {t("identity.trait")}
-        </span>
+          {t("identity.link")}
+        </a>
       </div>
     </div>
   </div>
