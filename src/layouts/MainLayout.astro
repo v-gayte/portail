@@ -34,6 +34,9 @@ const ogImageURL = new URL(image, siteUrl);
     <meta name="title" content={title} />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang="fr" href={new URL("/fr/", siteUrl)} />
+    <link rel="alternate" hreflang="en" href={new URL("/en/", siteUrl)} />
+    <link rel="alternate" hreflang="x-default" href={new URL("/fr/", siteUrl)} />
 
     <!-- Open Graph / Facebook - Cinematic Theme -->
     <meta property="og:type" content="website" />

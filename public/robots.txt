@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /CV.pdf
+Allow: /
+
+Sitemap: https://virgil-gayte.me/sitemap-index.xml

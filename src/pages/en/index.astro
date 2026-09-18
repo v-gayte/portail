@@ -2,11 +2,13 @@
 import MainLayout from "../../layouts/MainLayout.astro";
 import FlagshipTile from "../../components/portal/FlagshipTile.astro";
 import WorkshopTile from "../../components/portal/WorkshopTile.astro";
-import PlaygroundTile from "../../components/portal/PlaygroundTile.astro";
 import IdentityTile from "../../components/portal/IdentityTile.astro";
-import CinemaTile from "../../components/portal/CinemaTile.astro";
 import TechStackTile from "../../components/portal/TechStackTile.astro";
 import SocialFlowTile from "../../components/portal/SocialFlowTile.astro";
+import ProjectGrid from "../../components/portal/ProjectGrid.astro";
+import CvDiskTile from "../../components/portal/CvDiskTile.astro";
+import StatusTile from "../../components/portal/StatusTile.astro";
+import VisitorCounterTile from "../../components/portal/VisitorCounterTile.astro";
 
 import { useTranslations } from "../../i18n/ui";
 
@@ -15,8 +17,8 @@ const t = useTranslations(lang);
 ---
 
 <MainLayout
-  title="The Artisan Tech Lab | Portal"
-  description="Vintage-tech portal to a digital artisan's creative ecosystem. Explore my projects, journey, and creations."
+  title="Portal | GAYTE Virgil"
+  description="Vintage-tech portal to Virgil Gayte's creative ecosystem. Explore my projects, journey, and creations."
   lang={lang}
 >
   <main
@@ -28,15 +30,15 @@ const t = useTranslations(lang);
         <h1
           class="text-4xl md:text-6xl lg:text-7xl font-slab font-bold text-text-cream mb-4 leading-tight"
         >
-          The Artisan Tech
-          <br />
-          Laboratory
+          Portal
           <span class="text-accent-amber">.</span>
         </h1>
         <p
           class="text-lg md:text-xl text-vintage-cream-dark max-w-2xl font-sans"
         >
-          Welcome to my creative space, where code meets design and innovation.
+          Welcome to my space. Here you can find
+          <br />
+          my projects, my ideas, my journey, and ways to contact me.
         </p>
 
         <!-- Language Selector -->
@@ -62,20 +64,24 @@ const t = useTranslations(lang);
       <div
         class="narrative-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 auto-rows-[140px] gap-5 md:gap-6"
       >
-        <!-- Line 1-2: Flagship (3x2) + Cinema (1x1) -->
+        <!-- Line 1-2: Flagship (3x2) + CV (1x1) -->
         <!-- Line 2: Flagship (cont.) + TechStack (1x1) -->
         <FlagshipTile lang={lang} />
-        <CinemaTile lang={lang} />
+        <CvDiskTile lang={lang} />
         <TechStackTile lang={lang} />
 
         <!-- Line 3: Identity (2x1) + Workshop (2x1) -->
         <IdentityTile lang={lang} />
         <WorkshopTile lang={lang} />
 
-        <!-- Line 4: Playground (2x1) + SocialFlow (2x1) -->
-        <PlaygroundTile lang={lang} />
+        <!-- Line 4: Visitor (1x1) + Contact (2x1) + Status (1x1) -->
+        <VisitorCounterTile lang={lang} />
         <SocialFlowTile lang={lang} />
+        <StatusTile lang={lang} />
       </div>
+
+      <!-- Projects Dropdown -->
+      <ProjectGrid lang={lang} />
 
       <!-- Footer -->
       <footer class="mt-16 pt-8 border-t border-accent-amber/20">
